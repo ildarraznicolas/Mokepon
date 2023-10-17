@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+<html>
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="Juega a MOKEPON y elige tu mascota y ataques para luchar contra el enemigo.">
     <title>MOKEPON!</title>
-    <script src="./js/mokepon.js"></script>
+    <script src="./js/mokepon.js" defer></script>
 </head>
 <body>
     <H1>MOKEPON! 🔥💧🌱</H1>
@@ -40,14 +42,15 @@
         <p>La mascota <span id="mascota-enemigo"></span> del enemigo tiene <span id="vidas-enemigo">3</span> vidas</p>
 
         <p>
-            <button id="boton-fuego">Fuego 🔥</button>
-            <button id="boton-agua">Agua 💧</button>
-            <button id="boton-tierra">Tierra 🌱</button>
+            <button id="boton-fuego" title="Seleccionar ataque de fuego">Fuego 🔥</button>
+            <button id="boton-agua" title="Seleccionar ataque de agua">Agua 💧</button>
+            <button id="boton-tierra" title="Seleccionar ataque de tierra">Tierra 🌱</button>
+
         </p>
     </section>
 
     <section id="mensajes">
-        <p>Tu mascota ataco con FUEGO, la mascota del enemigo ataco con TIERRA - GANASTE 🎉</p>
+        
     </section>
 
     <section id="reiniciar">
