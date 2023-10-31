@@ -1,0 +1,23 @@
+.titulo {
+    color: white;
+    width: 300px;
+    height: 50px;
+    background-color: #2E86C1;
+}
+
+label {
+    background-color: #2E86C1;
+    width: 300px;
+    height: 50px;
+}
+
+input {
+    background-color: #2E86C1;
+    height: 50px;
+}
+
+button {
+    background-color: #2E86C1;
+    width: 300px;
+    height: 50px;
+}

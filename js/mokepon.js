@@ -3,10 +3,18 @@ let ataqueEnemigo
 const FUEGO = 'FUEGO';
 const AGUA = 'AGUA';
 const TIERRA = 'TIERRA';
-
+let vidasJugador = 3
+let vidasEnemigo = 3
 
 //Funcion para seleccionar la mascota con el evento click
 function iniciarJuego() {
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque');
+    sectionSeleccionarAtaque.style.display = 'none'
+
+    let sectionReiniciar = document.getElementById('reiniciar');
+    sectionReiniciar.style.display = 'none'
+
+
     let botonMascotaJugador = document.getElementById('boton-mascota');
     botonMascotaJugador.addEventListener('click', seleccionarMascotaJugador);
 
@@ -17,9 +25,19 @@ function iniciarJuego() {
     botonAgua.addEventListener('click', ataqueAgua)
     let botonTierra = document.getElementById('boton-tierra') 
     botonTierra.addEventListener('click', ataqueTierra)
+
+    // Agregar un listener para el botón de reinicio
+    let botonReiniciar = document.getElementById('boton-reiniciar');
+    botonReiniciar.addEventListener('click', reiniciarJuego);
 }
 //Funcion para seleccionar la mascota
 function seleccionarMascotaJugador() {
+    let sectionSeleccionarMascota = document.getElementById('seleccionar-mascota');
+    sectionSeleccionarMascota.style.display = 'none'
+
+
+    let sectionSeleccionarAtaque = document.getElementById('seleccionar-ataque');
+    sectionSeleccionarAtaque.style.display = 'block'
 
     //Declaramos las variables de la funcion
     let jugar = 1;
@@ -37,7 +55,7 @@ function seleccionarMascotaJugador() {
         spanMascotaJugador.innerHTML = 'Ratigueya' ;
     } else {
         alert('Tienes que seleccionar una Mascota');
-        jugar = 0;
+        reiniciarJuego();
     }
 
     //Conficion para que la pc sellecione su mascota
@@ -95,18 +113,41 @@ function ataqueAleatorioEnemigo() {
 
 //funcion para general un resultado
 function combate() {
-    if(ataqueEnemigo == ataqueJugador) {
-        crearMensaje("EMPATE")
-    } else if(ataqueJugador == FUEGO && ataqueEnemigo == TIERRA) {
-        crearMensaje("GANASTE")
-    } else if(ataqueJugador == AGUA && ataqueEnemigo == FUEGO) {
-        crearMensaje("GANASTE")
-    } else if(ataqueJugador == TIERRA && ataqueEnemigo == AGUA) {
-        crearMensaje("GANASTE")
+    let spanVidasJugador = document.getElementById('vidas-jugador');
+    let spanVidasEnemigo = document.getElementById('vidas-enemigo');
+    
+    if (ataqueEnemigo == ataqueJugador) {
+        crearMensaje("EMPATE");
+    } else if (ataqueJugador == FUEGO && ataqueEnemigo == TIERRA) {
+        crearMensaje("GANASTE");
+        vidasEnemigo--; // Restar una vida al enemigo
+        spanVidasEnemigo.innerHTML = vidasEnemigo;
+    } else if (ataqueJugador == AGUA && ataqueEnemigo == FUEGO) {
+        crearMensaje("GANASTE");
+        vidasEnemigo--; // Restar una vida al enemigo
+        spanVidasEnemigo.innerHTML = vidasEnemigo;
+    } else if (ataqueJugador == TIERRA && ataqueEnemigo == AGUA) {
+        crearMensaje("GANASTE");
+        vidasEnemigo--; // Restar una vida al enemigo
+        spanVidasEnemigo.innerHTML = vidasEnemigo;
     } else {
-        crearMensaje ("PERDISTE")
+        crearMensaje("PERDISTE");
+        vidasJugador--;
+        spanVidasJugador.innerHTML = vidasJugador;
+    }
+
+    //Revisar vidas
+    revisarVidas()
+}
+
+function revisarVidas() {
+    if (vidasEnemigo == 0) {
+        crearMensajeFinal("FELICITACIONES! GANASTE :)")
+    } else if (vidasJugador == 0 ) {
+        crearMensajeFinal("LO SIENTO, PERDISTE :(")
     }
 }
+
 
 //funciones de mensaje
 function crearMensaje(resultado) {
@@ -117,5 +158,30 @@ function crearMensaje(resultado) {
 
     sectionMensajes.appendChild(parrafo);
 }
+
+function crearMensajeFinal(resultadoFinal) {
+    let sectionMensajes = document.getElementById('mensajes');
+    
+    let parrafo = document.createElement('p');
+    parrafo.innerHTML = resultadoFinal;
+
+    sectionMensajes.appendChild(parrafo);
+
+    let botonFuego = document.getElementById('boton-fuego')
+    botonFuego.disabled = true
+    let botonAgua = document.getElementById('boton-agua')
+    botonAgua.disabled = true
+    let botonTierra = document.getElementById('boton-tierra') 
+    botonTierra.disabled = true
+
+    let sectionReiniciar = document.getElementById('reiniciar');
+    sectionReiniciar.style.display = 'block'
+}
+
+function reiniciarJuego() {
+    location.reload()
+}
+
+
 
 window.addEventListener('load', iniciarJuego);
