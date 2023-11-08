@@ -3,35 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Juega a MOKEPON y elige tu mascota y ataques para luchar contra el enemigo.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MOKEPON!</title>
     <script src="./js/mokepon.js" defer></script>
     <link rel="stylesheet" type="text/css" href="./styles.css">
 </head>
 <body>
-    <h1 class="titulo">MOKEPON! 🔥💧🌱</h1>
-
     <section id="seleccionar-mascota">
-        <h2>Elige tu mascota:</h2>
+        <h1 class="titulo">MOKEPON</h1>
 
-        <label for="hipodoge">Hipodoge</label>
-        <input type="radio" name="mascota" id="hipodoge">
-        <label for="capipepo">Capipepo</label>
-        <input type="radio" name="mascota" id="capipepo">
-        <label for="ratigueya">Ratigueya</label>
-        <input type="radio" name="mascota" id="ratigueya">
+        <h2 class="subtitulo">Elige tu mascota</h2>
 
-        <!--
-        <input type="radio" name="mascota">
-        <input type="radio" name="mascota">
-        <input type="radio" name="mascota">
-
-        Hipope -> Agua
-        Capipepo -> Tierra
-        Ratigueya -> Fuego
-        Langostelvis -> Agua y Fuego
-        Tucapalma -> Agua y Tierra 
-        Pydos -> Tierra y Fuego
-        -->
+        <div class="tarjetas">
+            <label class="tarjeta-mascota" for="hipodoge">
+                <p>Hipodoge</p>
+                <img src="./assets/Hipodoge.png" alt="Hipodoge">
+            </label>
+            <input type="radio" name="mascota" id="hipodoge" />
+    
+            <label class="tarjeta-mascota" for="capipepo">
+                <p>Capipepo</p>
+                <img src="./assets/Capipepo.png" alt="Capipepo">
+            </label>
+            <input type="radio" name="mascota" id="capipepo" />
+    
+            <label class="tarjeta-mascota" for="ratigueya">
+                <p>Ratigueya</p>
+                <img src="./assets/Ratigueya.png" alt="Ratigueya">
+            </label>
+            <input type="radio" name="mascota" id="ratigueya" />    
+        </div>
 
         <button id="boton-mascota">Seleccionar</button>
     </section>
@@ -48,10 +49,9 @@
             <button id="boton-tierra" title="Seleccionar ataque de tierra">Tierra 🌱</button>
 
         </p>
-    </section>
 
+    </section>
     <section id="mensajes">
-        
     </section>
 
     <section id="reiniciar">
